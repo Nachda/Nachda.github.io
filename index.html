@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nachda Nourouddine — Telecom & Networks Engineering</title>
+<meta name="description" content="Portfolio of Nachda Nourouddine, telecommunications & networks engineering student at ENSA Tétouan, seeking a PFE internship in mobile networks.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nachda Nourouddine — Telecom & Networks Engineering">
+<meta property="og:description" content="Mobile networks, RF planning and signal processing. Seeking a PFE internship.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f2e7;--paper2:#efe9d8;--card:rgba(251,249,241,.97);--ink:#191b1e;--soft:#5b6067;--dim:#9a9d9f;--bd:#ddd5c1;--bd2:#b5aa8f;--red:#c92a2a;--grn:#2f9e44;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);background-image:linear-gradient(rgba(24,100,171,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(24,100,171,.05) 1px,transparent 1px);background-size:24px 24px;background-attachment:fixed}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+:focus-visible{outline:2px dashed var(--red);outline-offset:3px}
+#rf{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,nav,footer{position:relative;z-index:1}
+.w{max-width:1100px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:5;background:rgba(246,242,231,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--bd)}
+nav .w{display:flex;justify-content:space-between;align-items:center;height:56px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.mk{width:32px;height:32px;border:1.5px solid var(--ink);display:grid;place-items:center;font:800 15px var(--mono);position:relative}
+.mk:before{content:'';position:absolute;width:8px;height:1.5px;background:var(--red);top:-1.5px;left:6px}
+.mk:after{content:'';position:absolute;width:1.5px;height:8px;background:var(--red);left:-1.5px;top:6px}
+.brand b{font:700 .8rem var(--mono);letter-spacing:.04em;display:block;line-height:1.2}
+.brand small{font:.62rem var(--mono);color:var(--dim);letter-spacing:.1em}
+nav ul{display:flex;list-style:none;gap:2px}
+nav ul a{font:600 .72rem var(--mono);color:var(--soft);padding:6px 9px;border:1px solid transparent;text-decoration:none}
+nav ul a:hover{color:var(--ink);border-color:var(--bd);background:var(--card)}
+#mb{display:none;font:700 1rem var(--mono);border:1.5px solid var(--ink);background:transparent;padding:3px 10px;cursor:pointer;color:var(--ink)}
+@media(max-width:900px){#mb{display:block}nav ul{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--bd);padding:8px 24px}nav ul.open{display:flex}}
+.hero{padding:70px 0 60px;border-bottom:1px solid var(--bd);position:relative}
+.ann{display:flex;justify-content:space-between;font:.64rem var(--mono);color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+.lab{display:flex;align-items:center;gap:8px;font:600 .72rem var(--mono);color:var(--red);letter-spacing:.15em;text-transform:uppercase;margin:46px 0 18px}
+.lab:before{content:'';width:20px;height:1px;background:var(--red)}
+h1{font:800 clamp(2.5rem,9vw,6rem)/.92 var(--mono);letter-spacing:-.03em;margin-bottom:26px}
+h1,.lead,.lab{text-shadow:0 0 6px var(--paper),0 0 14px var(--paper)}
+h1 i.tx{display:inline-block;width:.12em;height:.12em;border-radius:50%;background:var(--red);margin-left:.08em;position:relative}
+h1 i.tx:after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--red);animation:rg 2.4s infinite}
+.lead{max-width:680px;color:var(--soft);font-size:1.02rem;margin-bottom:30px}.lead b{color:var(--ink)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:700 .76rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.p{background:var(--red);border-color:var(--red);color:#fff}.btn.p:hover{background:var(--ink);border-color:var(--ink)}
+.tb{position:absolute;top:64px;right:24px;width:230px;border:1.5px solid var(--ink);background:var(--card);font:.62rem var(--mono);display:none}
+@media(min-width:1150px){.tb{display:block}}
+.tb div{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--bd)}.tb div:last-child{border:0}
+.tb span{padding:4px 8px;background:var(--paper2);color:var(--dim);font-weight:600;border-right:1px solid var(--bd)}
+.tb em{font-style:normal;padding:4px 8px;font-weight:700}.tb .g{color:var(--grn)}
+section{padding:64px 0}
+section:nth-of-type(even){background:rgba(239,233,216,.45)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:32px}
+.sh h2{font:800 clamp(1.2rem,2.4vw,1.6rem) var(--mono);text-transform:uppercase;letter-spacing:.02em}
+.sh p{font:.72rem var(--mono);color:var(--soft);text-align:right}
+.card{background:var(--card);border:1px solid var(--bd);padding:20px 22px}
+.card h3{font:700 1rem var(--mono);margin-bottom:4px}
+.meta{font:.72rem var(--mono);color:var(--red);font-weight:600;margin-bottom:10px}
+.card p,.card li{color:var(--soft);font-size:.92rem}.card ul{list-style:none}
+.card li{position:relative;padding-left:18px;margin-bottom:7px}.card li:before{content:'▸';position:absolute;left:0;color:var(--red)}
+.card b{color:var(--ink)}.card p+p{margin-top:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:780px){.g2,.about{grid-template-columns:1fr!important}.badge{max-width:280px}}
+.about{display:grid;grid-template-columns:320px 1fr;gap:36px;align-items:start}
+.badge{background:var(--card);border:1.5px solid var(--ink);padding:16px;box-shadow:4px 4px 0 var(--paper2),4px 4px 0 1px var(--bd)}
+.bh{display:flex;justify-content:space-between;font:600 .6rem var(--mono);letter-spacing:.1em;color:var(--soft);text-transform:uppercase;padding-bottom:9px;border-bottom:1px dashed var(--bd);margin-bottom:12px}.bh b{color:var(--red)}
+.ph{position:relative;aspect-ratio:1;border:1px solid var(--bd);background:var(--paper2);display:grid;place-items:center;margin-bottom:12px;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph svg{width:80%;height:80%}
+.bf{font:.7rem var(--mono);display:grid;gap:4px}.bf div{display:flex;justify-content:space-between;gap:10px}.bf span:first-child{color:var(--dim)}.bf span:last-child{font-weight:700;text-align:right}
+.about .lead{color:var(--ink);font-size:1.1rem;max-width:none}.about p{color:var(--soft);font-size:.95rem;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.chip{font:600 .66rem var(--mono);padding:3px 8px;background:var(--paper2);border:1px solid var(--bd);color:var(--soft)}
+button.chip{cursor:pointer}button.chip:hover,.chip.on{border-color:var(--red);color:var(--red);background:rgba(201,42,42,.06)}
+.fl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;align-items:center}
+#msg{font:.74rem var(--mono);color:var(--red)}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:18px}
+.pj{display:flex;flex-direction:column;padding:0;transition:border-color .15s,transform .15s}.pj:hover{border-color:var(--red);transform:translateY(-2px)}
+.ph2{display:flex;justify-content:space-between;padding:7px 14px;background:var(--paper2);border-bottom:1px solid var(--bd);font:600 .62rem var(--mono);letter-spacing:.08em;color:var(--dim)}.ph2 b{color:var(--red)}
+.pb{padding:16px 18px;display:flex;flex-direction:column;flex:1}
+.res{font:600 .72rem var(--mono);color:var(--ink);background:rgba(201,42,42,.07);border-left:3px solid var(--red);padding:6px 10px;margin:10px 0 0}
+.lk{margin-top:auto;padding-top:14px;font:700 .74rem var(--mono);display:flex;gap:16px}
+.ly{display:grid;gap:10px}
+.l{display:grid;grid-template-columns:210px 1fr;gap:14px;align-items:center;background:var(--card);border:1px solid var(--bd);border-left:4px solid var(--red);padding:12px 16px}
+.l h3{font:700 .78rem var(--mono);text-transform:uppercase}.l h3 small{display:block;font:400 .66rem var(--sans);text-transform:none;color:var(--soft)}.l .chips{margin:0}
+@media(max-width:700px){.l{grid-template-columns:1fr}}
+.term{background:var(--ink);color:#e9e4d3;border:1.5px solid var(--ink);padding:22px;font:.82rem/1.8 var(--mono);max-width:720px;margin:0 auto;box-shadow:5px 5px 0 var(--bd2)}
+.term .d{color:#8d8f93}.term .ok{color:#6ee08c}
+#out{white-space:pre-wrap;min-height:150px;margin:10px 0 14px}
+#lk2{display:none;gap:10px;flex-wrap:wrap}
+.term .btn{border-color:#e9e4d3;color:#e9e4d3}.term .btn:hover{background:#e9e4d3;color:var(--ink)}.term .btn.p{background:var(--red);border-color:var(--red);color:#fff}
+footer{border-top:1px solid var(--bd);padding:22px 0;font:.65rem var(--mono);color:var(--dim);letter-spacing:.08em;text-align:center}
+@keyframes rg{0%{transform:scale(.4);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+@keyframes dsh{to{stroke-dashoffset:-12}}
+.ask{margin-top:20px;border:1.5px solid var(--ink);background:var(--card);padding:16px 18px;box-shadow:4px 4px 0 var(--paper2),4px 4px 0 1px var(--bd)}
+.ask svg{width:100%;height:auto;display:block}
+.ask text{font:600 10px 'JetBrains Mono',monospace;fill:#5b6067}
+.rg{fill:none;stroke:#c92a2a;stroke-width:1.2;transform-box:fill-box;transform-origin:center;animation:rg 3s infinite}
+.dash{stroke-dasharray:6 6;animation:dsh 1s linear infinite}
+.about .ask p{font:800 1.2rem/1.35 var(--mono);color:var(--ink);margin:12px 0 0}
+#hud{position:fixed;left:14px;bottom:14px;z-index:6;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--ink);padding:6px 10px;font:600 .68rem var(--mono)}
+#hud button{font:600 .62rem var(--mono);border:1px solid var(--bd2);background:transparent;cursor:pointer;padding:2px 6px;color:var(--ink)}
+@media(max-width:700px){#hud{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+<canvas id="rf" aria-hidden="true"></canvas>
+
+<nav><div class="w">
+  <a class="brand" href="#top"><span class="mk">N</span><span><b>N. NOUROUDDINE</b><small>PORTFOLIO · 2026</small></span></a>
+  <button id="mb" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+  <ul id="nm"><li><a href="#about">About</a></li><li><a href="#education">Education</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#leadership">Leadership</a></li><li><a href="#contact">Contact</a></li></ul>
+</div></nav>
+
+<main id="top">
+<header class="hero"><div class="w" style="position:relative">
+  <div class="ann"><span>Telecom &amp; Networks</span><span>ENSA Tétouan · 2026</span></div>
+  <div class="tb">
+    <div><span>TITLE</span><em>PORTFOLIO</em></div>
+    <div><span>AUTHOR</span><em>N. NOUROUDDINE</em></div>
+    <div><span>SCHOOL</span><em>ENSA TÉTOUAN</em></div>
+    <div><span>FIELD</span><em>TELECOM &amp; NETWORKS</em></div>
+    <div><span>REV</span><em>2026</em></div>
+    <div><span>STATUS</span><em class="g">SEEKING PFE</em></div>
+  </div>
+  <div class="lab">Telecommunications &amp; Networks Engineering</div>
+  <h1>NACHDA<br>NOUROUDDINE<i class="tx"></i></h1>
+  <p class="lead">Final-year engineering student at <b>ENSA Tétouan</b>. Solid training in <b>mobile networks, network protocols, RF planning (Atoll, NetSpot) and digital signal processing (DSP, GNU Radio)</b>, applied through simulation projects and coverage studies. Seeking a <b>PFE internship in mobile networks and telecommunications</b>.</p>
+  <div class="btns">
+    <a class="btn p" href="#projects">View projects</a>
+    <a class="btn" href="CV_Nachda_Nourouddine.pdf" target="_blank" rel="noopener">Download CV</a>
+    <a class="btn" href="#contact">Contact</a>
+  </div>
+</div></header>
+
+<section id="about"><div class="w">
+  <div class="sh"><h2>About</h2><p>who I am</p></div>
+  <div class="about">
+    <aside class="badge" aria-label="ID card">
+      <div class="bh"><span>Engineering student</span><b>2026</b></div>
+      <div class="ph">
+        <!-- Photo: put a square file named photo.jpg next to index.html; it replaces the monogram automatically -->
+        <img src="photo.jpg" alt="Nachda Nourouddine" onerror="this.remove()">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="78" fill="none" stroke="#191b1e" stroke-width="1"/><circle cx="100" cy="100" r="62" fill="none" stroke="#191b1e" stroke-width=".5" opacity=".5"/><text x="100" y="122" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="68" font-weight="800" fill="#191b1e">N</text><circle cx="178" cy="100" r="4" fill="#c92a2a"/></svg>
+      </div>
+      <div class="bf">
+        <div><span>SCHOOL</span><span>ENSA TÉTOUAN</span></div>
+        <div><span>FIELD</span><span>TELECOM &amp; NETWORKS</span></div>
+        <div><span>DEGREE</span><span>EXPECTED 2027</span></div>
+        <div><span>LANGUAGES</span><span>French (C2)<br>English (B2)<br>Arabic (A1)</span></div>
+      </div>
+    </aside>
+    <div>
+      <p class="lead">I'm a final-year engineering student in Telecommunications &amp; Networks Systems, with a strong foundation in mobile networks, network protocols, radio planning and signal processing.</p>
+      <p>I put this training into practice through simulation projects (UMTS soft handover, M-QAM modem) and field studies (Wi-Fi coverage survey). I'm also interested in data analysis and machine learning applied to networks.</p>
+      <div class="ask">
+        <svg viewBox="0 0 520 135" role="img" aria-label="A mobile terminal sends an internship request to a mobile network">
+          <circle class="rg" cx="55" cy="65" r="30"/><circle class="rg" cx="55" cy="65" r="30" style="animation-delay:-1.5s"/>
+          <rect x="40" y="38" width="30" height="54" rx="5" fill="#fbf9f1" stroke="#191b1e" stroke-width="1.5"/><line x1="49" y1="83" x2="61" y2="83" stroke="#191b1e"/>
+          <line class="dash" x1="92" y1="65" x2="425" y2="65" stroke="#c92a2a" stroke-width="1.5"/>
+          <text x="258" y="52" text-anchor="middle">REQUEST: PFE INTERNSHIP · 2027</text>
+          <polyline points="440,100 460,30 480,100" fill="none" stroke="#191b1e" stroke-width="1.5"/><polyline points="447,80 473,80 452,64 468,64" fill="none" stroke="#191b1e"/>
+          <circle cx="460" cy="24" r="3.5" fill="#c92a2a"/><circle class="rg" cx="460" cy="24" r="14" style="animation-delay:-1s"/>
+          <text x="55" y="118" text-anchor="middle">NACHDA · UE</text><text x="460" y="118" text-anchor="middle">YOUR NETWORK</text>
+        </svg>
+        <p>I'm looking for a final-year internship (PFE) in mobile networks and telecommunications.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="education"><div class="w">
+  <div class="sh"><h2>Education</h2><p>degree &amp; certifications</p></div>
+  <div class="g2">
+    <div class="card">
+      <h3>ENSA Tétouan</h3><div class="meta">2021 – present · degree expected 2027</div>
+      <p>Engineering cycle — Telecommunications &amp; Networks Systems (5th year, Telecom track).</p>
+      <div class="chips"><span class="chip">Mobile Network Technologies</span><span class="chip">IP Routing &amp; Switching</span><span class="chip">Network Security</span><span class="chip">Digital Signal Processing</span><span class="chip">Digital Modulation</span><span class="chip">Machine &amp; Deep Learning</span><span class="chip">Oracle Databases</span></div>
+    </div>
+    <div class="card">
+      <h3>Certifications</h3><div class="meta">2025</div>
+      <ul><li><b>Cybersecurity Fundamentals</b> — IBM SkillsBuild</li><li><b>ML for Cybersecurity</b> — IBM Developer Skills</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="w">
+  <div class="sh"><h2>Experience</h2><p>internship</p></div>
+  <div class="card">
+    <h3>PFA Intern — Embedded Systems &amp; AI · H.B Development</h3>
+    <div class="meta">Tétouan · July – August 2026</div>
+    <p style="margin-bottom:12px">Design and prototype of an embedded robotic system for precision agriculture: detection, geolocation and agronomic advice for crop diseases.</p>
+    <ul>
+      <li>Designed the <b>hardware architecture</b> (ESP32, GPS, 4G/LoRa modem) and the <b>three-tier connectivity</b>; validated the firmware with Wokwi simulations.</li>
+      <li>Designed and optimised the <b>speech-to-text pipeline</b>, roughly halving transcription latency in steady state (40 s → 17 s).</li>
+      <li>Built and secured the <b>FastAPI backend</b> (JWT, SQLite) and integrated the AgriGPT assistant (LLM / RAG) for instant agronomic consultations.</li>
+      <li>Developed the <b>bilingual Flutter app</b> (French / Darija) with real-time geolocation.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="projects"><div class="w">
+  <div class="sh"><h2>Projects</h2><p>most recent first</p></div>
+  <div class="fl" id="fl"></div>
+  <div class="pg" id="pg"></div>
+</div></section>
+
+<section id="skills"><div class="w">
+  <div class="sh"><h2>Skills</h2><p>click a skill to see the projects that use it</p></div>
+  <div class="ly" id="ly"></div>
+</div></section>
+
+<section id="leadership"><div class="w">
+  <div class="sh"><h2>Leadership</h2><p>student association</p></div>
+  <div class="card">
+    <h3>General Treasurer — ACEM, Tétouan section</h3><div class="meta">Comorian Students' Association in Morocco</div>
+    <p>Budget management and sponsoring lead for an association of 50+ members running 5 events per year.</p>
+  </div>
+</div></section>
+
+<section id="contact"><div class="w">
+  <div class="sh"><h2>Contact</h2><p>get in touch</p></div>
+  <div class="term">
+    <div class="d">UE&gt; press the button to attach to the network</div>
+    <div id="out"></div>
+    <button class="btn" id="att">&gt; Attach to network</button>
+    <div id="lk2" style="margin-top:16px">
+      <a class="btn p" href="mailto:nourouddine.nachda@gmail.com">Email</a>
+      <a class="btn" href="https://linkedin.com/in/nourouddine-nachda" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Nachda" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="CV_Nachda_Nourouddine.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </div>
+</div></section>
+</main>
+<div id="hud"><span id="hs">UE (your cursor) · searching…</span><button id="rfb" type="button">RF layer: on</button></div>
+<footer>© 2026 NACHDA NOUROUDDINE · ENSA TÉTOUAN</footer>
+
+<script>
+const P=[
+{t:"UMTS/WCDMA soft handover simulation",y:"2026–27",c:["Radio"],s:["MATLAB","3GPP","COST231-Hata"],d:"MATLAB simulator of a mobile crossing 2 then 3 Node B: RSCP, Ec/No, Active Set, 3GPP events 1A–1D, correlated log-normal shadowing. Monte-Carlo study of TTT × hysteresis.",r:"Ping-pong ≈ 33 → ≈ 0.1 (2 Node B)",g:"umts-soft-handover-simulation"},
+{t:"Raased — AI agent for logistics corridors",y:"2026",c:["Radio","Data"],s:["CAMARA APIs","LangGraph","FastAPI","PostGIS"],d:"GSMA MENA hackathon. Autonomous agent turning mobile-network signals (congestion, location, QoS) into early warnings for freight. Role: Network Specialist, team of 5.",r:"Working prototype + demo video",g:"GSMA-Hackathon-Raased",x:["Demo","https://drive.google.com/file/d/1FL0WAf2mkQn1CItfC1QT11rns_4QfKw3/view"]},
+{t:"5G traffic prediction — Deep Learning",y:"2025–26",c:["Data","Radio"],s:["Python","TensorFlow","LSTM","Streamlit"],d:"Prediction of 5G throughput and packet counts over 1–10 s from 4M+ real packets; 23 models benchmarked, deployed in a Streamlit dashboard.",r:"Stacked generalization: +18.4 % vs other models",g:"Projet-Deep-Learning-5G-Trafic-Predicton-"},
+{t:"Smart Parking System",y:"2025–26",c:["Embedded","Data"],s:["Raspberry Pi","Arduino","TensorFlow","Flutter"],d:"Working 2-floor automated parking model: IR sensors, RFID, Arabic plate-recognition CNN, Flutter client and admin apps. Team of 3.",r:"1st prize — NEXUS Innovators",g:"Smart-Parking-System"},
+{t:"ChriOnline — secure e-commerce",y:"2025–26",c:["Security"],s:["Java","TCP/UDP sockets","AES","RSA","MySQL"],d:"Client–server app over TCP/UDP sockets: hybrid AES/RSA encryption, challenge-response admin auth, protection against brute-force, replay and DoS.",g:"Application-E-commerce-ChriOnline-"},
+{t:"M-QAM modem — physical layer",y:"2024–25",c:["Radio"],s:["Python","NumPy","Matplotlib"],d:"16/64/256-QAM modem: Gray mapping, AWGN channel, constellations, BER/SNR curves, image transmission.",r:"SNR 15.07 dB · BER matches theory",g:"Projet-Modem-QAM"},
+{t:"Wi-Fi site survey — NetSpot",y:"2024–25",c:["Radio"],s:["NetSpot","RF planning"],d:"Coverage map of the 2nd floor at ENSA Tétouan (20 data points): dead zones (< −96 dBm), interference, optimal access-point placement.",r:"Minimum coverage raised to −70 dBm",g:"Projet-Netspot"},
+{t:"Digital signal processing",y:"2024–25",c:["Radio"],s:["Python","Jupyter","FFT"],d:"Convolution, spectral analysis (FFT), sampling, low-pass and high-pass filters.",g:"Projet-de-Traitement-de-signal"},
+{t:"Time series — SNCF Transilien",y:"2024–25",c:["Data"],s:["Python","Pandas","ARIMA"],d:"Predicting daily validations per station (2015–2022) with persistent, autoregressive, Random Forest and ARIMA models (SNCF: Société nationale des chemins de fer français, the French national railway company).",g:"Projet-Machine-Learning_Time-Series"},
+{t:"Marketing campaign response prediction",y:"2024–25",c:["Data"],s:["Python","Scikit-learn"],d:"Machine learning project on the “Marketing Campaign” dataset: predicting how customers respond to a campaign in order to improve targeting and increase the positive response rate.",l:["Identify the customer characteristics that influence the response","Clean and prepare the data (preprocessing, cleaning, normalisation) and run an exploratory data analysis (EDA)","Build and compare three models: logistic regression, Random Forest, decision tree","Evaluate with accuracy, precision, recall and F1-score, then select the best-performing model"],g:"Projet-Machine-Learning"}
+];
+const L=[
+["Signal & Physical layer","what travels on the air",["FFT","FIR/IIR filters","M-QAM","GNU Radio","MATLAB"]],
+["Mobile & Radio","2G to 5G, RF planning",["2G/3G/4G/5G","UMTS/WCDMA","Handover","Atoll","NetSpot"]],
+["Networking","IP routing & IoT links",["TCP/IP","OSPF","EIGRP","VLANs","MQTT","LoRaWAN"]],
+["Embedded","devices at the edge",["ESP32","Raspberry Pi","Arduino","C/C++"]],
+["Data & AI","learning from network data",["TensorFlow","Scikit-learn","XGBoost","Pandas","LSTM","Streamlit"]],
+["Software & Security","apps, APIs, protection",["Python","FastAPI","Flutter","Java","JWT","AES","RSA","Oracle SQL","SQLite","Git"]]
+];
+const al={"2G/3G/4G/5G":"Radio","FIR/IIR filters":"FFT","UMTS/WCDMA":"UMTS","Handover":"UMTS","Raspberry Pi":"Raspberry"};
+let cur="";const pg=document.getElementById("pg"),msg=document.createElement("span");msg.id="msg";
+function render(){const re=cur?new RegExp("\\b"+cur.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"i"):null;let n=0;
+ pg.innerHTML=P.map((p,i)=>({p,i})).filter(({p})=>!re||re.test(p.c.concat(p.s,[p.t,p.d]).join(" "))).map(({p,i})=>{n++;return `<article class="card pj"><div class="ph2"><b>P-${String(P.length-i).padStart(2,"0")}</b><span>${p.y}</span><span>${p.c.join(" · ")}</span></div><div class="pb"><h3>${p.t}</h3><p>${p.d}</p>${p.l?`<ul style="margin-top:8px">${p.l.map(i=>`<li>${i}</li>`).join("")}</ul>`:""}${p.r?`<div class="res">${p.r}</div>`:""}<div class="chips">${p.s.map(x=>`<span class="chip">${x}</span>`).join("")}</div><div class="lk"><a href="https://github.com/Nachda/${p.g}" target="_blank" rel="noopener">GitHub →</a>${p.x?`<a href="${p.x[1]}" target="_blank" rel="noopener">${p.x[0]} →</a>`:""}</div></div></article>`}).join("");
+ msg.textContent=`${n} / ${P.length} projects`;if(!n)pg.innerHTML=`<div class="card" style="grid-column:1/-1;text-align:center"><p>No project here uses “${cur}” yet — it comes from coursework and labs.</p></div>`;
+ document.querySelectorAll("[data-q]").forEach(b=>b.classList.toggle("on",b.dataset.q===cur))}
+function pick(q,go){cur=(cur===q?"":q);render();if(go)document.getElementById("projects").scrollIntoView()}
+const fl=document.getElementById("fl");
+[["All",""],["Radio & Mobile","Radio"],["Data & AI","Data"],["Embedded","Embedded"],["Security","Security"]].forEach(([l,q])=>{const b=document.createElement("button");b.className="chip";b.textContent=l;b.dataset.q=q;b.onclick=()=>{cur=q;render()};fl.appendChild(b)});
+fl.appendChild(msg);
+document.getElementById("ly").innerHTML=L.map(([h,s,c])=>`<div class="l"><h3>${h}<small>${s}</small></h3><div class="chips">${c.map(x=>`<button class="chip" data-q="${al[x]||x}" onclick="pick(this.dataset.q,true)">${x}</button>`).join("")}</div></div>`).join("");
+render();
+
+const mb=document.getElementById("mb"),nm=document.getElementById("nm");
+mb.onclick=()=>{const o=nm.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
+nm.onclick=e=>{if(e.target.tagName==="A"){nm.classList.remove("open");mb.setAttribute("aria-expanded","false")}};
+/* Contact: attach sequence */
+const out=document.getElementById("out"),att=document.getElementById("att");let busy=false;
+att.onclick=()=>{if(busy)return;busy=true;out.innerHTML="";
+ const s=["Scanning frequency bands...","Cell found · BTS ENSA-TETOUAN","Synchronisation OK · MIB decoded","Random access · preamble sent","RRC connection established","RSRP -82 dBm · SINR 21 dB","<span class='ok'>ATTACHED. Open to a PFE internship in mobile networks &amp; telecom.</span>"];
+ let i=0;const t=setInterval(()=>{out.innerHTML+="&gt; "+s[i++]+"\n";if(i>=s.length){clearInterval(t);document.getElementById("lk2").style.display="flex";busy=false}},480)};
+
+/* Background: base stations + a mobile (your cursor) */
+const cv=document.getElementById("rf"),x=cv.getContext("2d"),still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const T=[[.05,.2],[.94,.12],[.95,.52],[.06,.62],[.94,.88]].map((p,i)=>({fx:p[0],fy:p[1],id:i+1,ph:i*.37}));
+let W,H,m=null,srv=-1,flash=0,flashTxt="",ul=[],t0=0;
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;T.forEach(a=>{a.x=a.fx*W;a.y=a.fy*H})}
+const rsrp=a=>-65-28*Math.log10(Math.max(Math.hypot(a.x-m.x,a.y-m.y),30)/30);
+function move(e){const p=e.touches?e.touches[0]:e;m={x:p.clientX,y:p.clientY}}
+addEventListener("mousemove",move);addEventListener("touchmove",move,{passive:true});
+addEventListener("click",e=>{ul.push({x:e.clientX,y:e.clientY,r:0})});
+function mast(a,on){x.strokeStyle=on?"#c92a2a":"#191b1e";x.lineWidth=1.3;x.beginPath();x.moveTo(a.x-7,a.y+16);x.lineTo(a.x,a.y-10);x.lineTo(a.x+7,a.y+16);x.moveTo(a.x-4,a.y+6);x.lineTo(a.x+4,a.y+6);x.moveTo(a.x-2,a.y-1);x.lineTo(a.x+2,a.y-1);x.stroke();
+ x.fillStyle="#c92a2a";x.beginPath();x.arc(a.x,a.y-12,2.5,0,7);x.fill();x.font="600 10px JetBrains Mono,monospace";x.fillStyle="#9a9d9f";x.fillText("BTS-"+a.id,a.x+12,a.y+14)}
+function draw(ts){
+ if(!rfOn&&!still){setTimeout(()=>requestAnimationFrame(draw),400);return}
+ x.clearRect(0,0,W,H);const tm=ts/1000;
+ T.forEach(a=>{for(let k=0;k<4;k++){const f=((tm*.14+a.ph+k/4)%1);const r=f*Math.max(W,H)*.42;x.strokeStyle=`rgba(${a.id===srv+1?"201,42,42":"25,27,30"},${.16*(1-f)})`;x.lineWidth=1;x.beginPath();x.arc(a.x,a.y,r,0,7);x.stroke()}});
+ if(m){let b=0,bv=-999;const v=T.map(rsrp);v.forEach((s,i)=>{if(s>bv){bv=s;b=i}});
+  if(srv<0)srv=b;else if(b!==srv&&bv>v[srv]+3){srv=b;flash=90;flashTxt="HANDOVER → BTS-"+T[b].id}
+  const a=T[srv];x.setLineDash([5,5]);x.strokeStyle="#c92a2a";x.lineWidth=1;x.beginPath();x.moveTo(m.x,m.y);x.lineTo(a.x,a.y);x.stroke();x.setLineDash([]);
+  const f=(tm*.8)%1,up=Math.floor(tm*.8)%2;const q=up?f:1-f;x.fillStyle="#c92a2a";x.beginPath();x.arc(m.x+(a.x-m.x)*q,m.y+(a.y-m.y)*q,3,0,7);x.fill();
+  x.strokeStyle="#191b1e";x.lineWidth=1.4;x.beginPath();x.arc(m.x,m.y,6,0,7);x.stroke();x.fillStyle="#191b1e";x.beginPath();x.arc(m.x,m.y,2,0,7);x.fill();
+  hs.textContent=`BTS-${a.id} · ${v[srv].toFixed(0)} dBm`;hs.style.color="";
+  if(flash>0){flash--;hs.textContent=flashTxt;hs.style.color="#c92a2a"}}
+ ul=ul.filter(u=>{u.r+=3;x.strokeStyle=`rgba(201,42,42,${Math.max(0,.6-u.r/260)})`;x.beginPath();x.arc(u.x,u.y,u.r,0,7);x.stroke();return u.r<260});
+ T.forEach((a,i)=>mast(a,i===srv));
+ if(!still)requestAnimationFrame(draw)}
+const hs=document.getElementById("hs"),rfb=document.getElementById("rfb");let rfOn=true;
+rfb.onclick=()=>{rfOn=!rfOn;cv.style.display=rfOn?"":"none";hs.style.display=rfOn?"":"none";rfb.textContent="RF layer: "+(rfOn?"on":"off")};
+function fade(){cv.style.opacity=Math.max(.3,1-scrollY/(innerHeight*.7))}addEventListener("scroll",fade);fade();
+size();requestAnimationFrame(draw);addEventListener("resize",()=>{size();if(still)requestAnimationFrame(draw)});
+</script>
+</body>
+</html>
