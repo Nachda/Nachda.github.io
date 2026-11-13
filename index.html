@@ -46,8 +46,8 @@ h1 i.tx:after{content:'';position:absolute;inset:0;border-radius:50%;border:2px 
 .btn{font:700 .76rem var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none}
 .btn:hover{background:var(--ink);color:var(--paper)}
 .btn.p{background:var(--red);border-color:var(--red);color:#fff}.btn.p:hover{background:var(--ink);border-color:var(--ink)}
-.tb{position:absolute;top:64px;right:24px;width:230px;border:1.5px solid var(--ink);background:var(--card);font:.62rem var(--mono);display:none}
-@media(min-width:1150px){.tb{display:block}}
+.tb{position:static;display:block;width:100%;max-width:260px;margin:22px 0 0;border:1.5px solid var(--ink);background:var(--card);font:.62rem var(--mono)}
+@media(min-width:900px){.tb{position:absolute;top:64px;right:24px;width:230px;margin:0}}
 .tb div{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--bd)}.tb div:last-child{border:0}
 .tb span{padding:4px 8px;background:var(--paper2);color:var(--dim);font-weight:600;border-right:1px solid var(--bd)}
 .tb em{font-style:normal;padding:4px 8px;font-weight:700}.tb .g{color:var(--grn)}
